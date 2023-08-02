@@ -1,4 +1,4 @@
-int pantalla1() {
+void pantalla1() {
   background(0, 0, 255);
   for (int y = 0; y < 400; y += 5) {
     float distancia = dist(mouseX, mouseY, mouseX, y);
@@ -17,15 +17,10 @@ int pantalla1() {
       fill(255);
     }
   }
-
-  if (key == '1') {
-    return 2;
-  }
-
-  return 1;
 }
 
-int pantalla2() {
+
+void pantalla2() {
   background(0, 0, 255);
   for (int x = 400; x < 800; x += 10) {
     float distancia = dist(mouseX, mouseY, x, mouseY);
@@ -44,15 +39,11 @@ int pantalla2() {
       fill(255);
     }
   }
-
-  if (key == '2') {
-    return 3;
-  }
-
-  return 2;
 }
 
-int pantalla3() {
+  
+
+void pantalla3() {
   background(0, 0, 255);
   for (int y = 0; y < 400; y += 10) {
     stroke(0);
@@ -71,14 +62,9 @@ int pantalla3() {
     }
   }
 
-  if (key == '3') {
-    return 4;
-  }
-
-  return 3;
 }
 
-int pantalla4() {
+void pantalla4() {
   background(0, 255, 0);
 
   int tamaño = 50;
@@ -102,14 +88,23 @@ int pantalla4() {
     noStroke();
     rect(400, i, 400, 5);
   }
-
-  if (key == '4') {
-    return 1;
-  }
-
-  return 4;
 }
 
+int siguientepantalla () {
+  
+  if (key == '2') {
+    return 2;
+  } else if (key == '3') {
+    return 3;
+  } else if (key == '4') {
+    return 4;
+  } else if (key == '1') {
+    return 1;
+  }
+  
+  return 1;
+}
+    
 
 
 

@@ -24,14 +24,6 @@
 }
  
  void keyPressed() {
-  if (key == '1') {
-    pantalla = 2;
-  } else if (key == '2') {
-    pantalla = 3;
-  } else if (key == '3') {
-    pantalla = 4;
-  } else if (key == 'r') {
-    pantalla = 1;
-  }
-}
+  pantalla = siguientepantalla();
+ }   
       
