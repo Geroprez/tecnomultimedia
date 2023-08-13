@@ -1,111 +1,65 @@
-PImage[] imagenes;
 int momento = 0;
-int pantallas = 18;
+PImage[] imagenes;
+int[] imagenesPorPantalla = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}; // Índice de imagen por cada pantalla
+boolean esperaTeclaSuelta = false;
 
 void setup() {
   size(600, 600);
-  ponerimagenes();  // Llama a la función para cargar las imágenes (si es necesario).
-}
-
-void draw() {
-  background(200);
-  tirarpantalla(momento);
-}
-
-void ponerimagenes() {
   
-   imagenes = new PImage[pantallas];
-   for (int i = 0; i < pantallas; i++) {
-     imagenes[i] = loadImage("dibujo" + i + ".jpg");
-   }
-}
-
-void tirarpantalla(int escena) {
-  if (escena == 0) {
-    tirartexto("la gallinita roja\nToca cualquier tecla para empezar.");
-    if (keyPressed) {
-      momento = 2;
-    }
-  } else if (escena == 1) {
-    tirartexto("texto sample");
-    if (keyPressed && (key == 'c' || key == 'C')) {
-      momento = 0;
-    }
-  } else if (escena >= 2 && escena <= 4) {
-    tirartexto("texto sample");
-    if (keyPressed) {
-      momento = escena + 1;
-    }
-  } else if (escena == 5) {
-    tirartexto("FINAL 1");
-    if (keyPressed && (key == 'r' || key == 'R')) {
-      momento = 0;
-    }
-  } else if (escena == 6 || escena == 14) {
-    tirartexto("texto");
-    if (keyPressed) {
-      int decision = tomarDecision(key);
-      if (decision == 0) {
-        momento = escena + 1;
-      } else if (decision == 1) {
-        momento = escena == 6 ? 14 : 18;
-      }
-    }
-  } else if (escena >= 7 && escena <= 9) {
-    tirartexto("texto");
-    if (keyPressed) {
-      momento = escena + 1;
-    }
-  } else if (escena == 10) {
-    tirartexto("texto");
-    if (keyPressed) {
-      int decision = tomarDecision(key);
-      if (decision == 0) {
-        momento = 11;
-      } else if (decision == 1) {
-        momento = 12;
-      }
-    }
-  } else if (escena == 11) {
-    tirartexto("FINAL 2");
-    if (keyPressed && (key == 'r' || key == 'R')) {
-      momento = 0;
-    }
-  } else if (escena == 12) {
-    tirartexto("texto");
-    if (keyPressed) {
-      momento = 13;
-    }
-  } else if (escena == 13) {
-    tirartexto("FINAL 3");
-    if (keyPressed && (key == 'r' || key == 'R')) {
-      momento = 0;
-    }
-  } else if (escena >= 15 && escena <= 16) {
-    tirartexto("texto");
-    if (keyPressed) {
-      int decision = tomarDecision(key);
-      if (decision == 0) {
-        momento = escena + 1;
-      } else if (decision == 1) {
-        momento = escena + 2;
-      }
-    }
-  } else if (escena == 17 || escena == 18) {
-    tirartexto("última pantalla");
+  imagenes = new PImage[19]; 
+  for (int i = 0; i < 19; i++) {
+    imagenes[i] = loadImage("dibujo" + i + ".jpg");
   }
 }
 
-void tirartexto(String mensaje) {
-  background(200);
-  textSize(20);
-  textAlign(CENTER);
-  text(mensaje, width / 2, height / 2);
-  textSize(16);
-  text("toca cualquier tecla para continuar.", width / 2, height - 50);
+void draw() {
+  background(220);
+  
+  if (momento == 0) {
+    pantalla0();
+  } else if (momento == 1) {
+    pantalla1();
+  } else if (momento == 2) {
+    pantalla2();
+  } else if (momento == 3) {
+    pantalla3();
+  } else if (momento == 4) {
+    pantalla4();
+  } else if (momento == 5) {
+    pantalla5();
+  } else if (momento == 6) {
+    pantalla6();
+  } else if (momento == 7) {
+    pantalla7();
+  } else if (momento == 8) {
+    pantalla8();
+  } else if (momento == 9) {
+    pantalla9();
+  } else if (momento == 10) {
+    pantalla10();
+  } else if (momento == 11) {
+    pantalla11();
+  } else if (momento == 12) {
+    pantalla12();
+  } else if (momento == 13) {
+    pantalla13();
+  } else if (momento == 14) {
+    pantalla14();
+  } else if (momento == 15) {
+    pantalla15();
+  } else if (momento == 16) {
+    pantalla16();
+  } else if (momento == 17) {
+    pantalla17();
+  } else if (momento == 18) {
+    pantalla18();
+  }
 }
 
-int tomarDecision(char tecla) {
-  float decision = map(tecla, 'a', 'd', 0, 1);
-  return int(decision);
+
+
+
+
+void keyReleased() {
+  esperaTeclaSuelta = false;
 }
