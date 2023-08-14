@@ -1,3 +1,4 @@
+ //https://youtu.be/tNrSOotUQrQ
   PImage IMAGEN;
   int pantalla = 1;
   float distancia;

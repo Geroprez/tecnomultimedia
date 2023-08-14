@@ -208,7 +208,7 @@ void pantalla16() {
 void pantalla17() {
   tirarImagen(imagenes[imagenesPorPantalla[momento]]);
   mostrarTexto("A pesar de que ellos no hicieron nada, \nla gallina decicio compartir el pan porque queria a sus amigos. \nTodos juntos disfrutaron del pan.",width/2,150);
-  mostrarTexto("FINAL 4\nToca cualquier tecla para continuar.", width / 2, height - 50);
+  mostrarTexto("FINAL 4\nR para volver al inicio", width / 2, height - 50);
   if (keyPressed && !esperaTeclaSuelta && (key == 'r' || key == 'R')) {
     esperaTeclaSuelta = true;
     momento = 0; 

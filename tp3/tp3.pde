@@ -1,3 +1,4 @@
+//https://youtu.be/11P02buEaXU
 int momento = 0;
 PImage[] imagenes;
 int[] imagenesPorPantalla = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}; // Índice de imagen por cada pantalla
