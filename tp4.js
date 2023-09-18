@@ -33,7 +33,6 @@ let enEscalera = false;
 let direccionSalto = -1;
 
 let velocidadSalto = 4;
-let gravedad = 0.2;
 
 let alturaSuperficie = 350;
 let posXHoyo = 105;
