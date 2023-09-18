@@ -1,3 +1,6 @@
+//https://youtu.be/kYqYJXri7sk Link Del video
+
+
 const DERECHA = "DERECHA";
 const IZQUIERDA = "IZQUIERDA";
 
@@ -21,7 +24,7 @@ let altoTronco = 40;
 let troncoVelocidad = 2;
 
 let pantallaActual = 1;
-let numPantallas = 5; // Añadida pantalla de instrucciones (4) y pantalla de créditos (5)
+let numPantallas = 3;
 let anchuraPantalla;
 let ganoJuego = false;
 let juegoDetenido = false;
@@ -52,21 +55,20 @@ let imagenTronco;
 let troncoX1 = 500;
 let troncoX2 = 700;
 let troncoY = 220;
-let troncoX2Subterraneo = 500;
+let troncoX2Subterraneo = 500; 
 let troncoY2Subterraneo = 330;
 
-let troncoX3Subterraneo = 600;
+let troncoX3Subterraneo = 500;
 let troncoY3Subterraneo = 330;
 let generacionTroncosHabilitada = true;
 
-let tiempoRestanteSegundos = 300;
-let tiempoRestanteCuadros = tiempoRestanteSegundos * 60;
+let tiempoRestanteSegundos = 300; 
+let tiempoRestanteCuadros = tiempoRestanteSegundos * 60; 
 let cuadrosTranscurridos = 0;
 let tiempoInicial;
 
-let instrucciones = "Instrucciones:\n\nMueve a Harry Potter usando las flechas izquierda y derecha. \nSalta con la flecha arriba. \nBaja por las escaleras con la flecha abajo. Evita los troncos y los hoyos. \nAlcanza el final antes de que se agote el tiempo.";
-
-let creditos = "Créditos:\n\nDesarrollado por Geronimo Perez. \nImágenes y recursos gráficos obtenidos de Pinterest y The Sprite Resource.";
+let instrucciones = "Instrucciones:\nPresiona 'I' para ver las instrucciones.\nPresiona 'C' para ver los créditos.\n Presiona 'R' para reiniciar el juego.\nUtiliza las teclas de flecha para mover al personaje.\nPresiona la flecha arriba para saltar.\nPresiona la flecha abajo para bajar de la escalera.";
+let creditos = "Créditos:\nJuego desarrollado por Geronimo Perez.\nImágenes y recursos obtenidos de Pinterest.";
 
 function preload() {
   for (let i = 0; i < cantImagenes; i++) {
@@ -90,7 +92,7 @@ function preload() {
 function setup() {
   createCanvas(400, 400);
   anchuraPantalla = width;
-  tiempoInicial = millis();
+  tiempoInicial = millis(); 
 }
 
 function dibujarTronco(x, y) {
@@ -160,18 +162,19 @@ function moverPersonaje() {
       if ((dist(posX + 20, posY + 40, troncoX1 + anchoTronco / 2, troncoY + altoTronco / 2) < anchoTronco / 2) ||
         (dist(posX + 20, posY + 40, troncoX2 + anchoTronco / 2, troncoY + altoTronco / 2) < anchoTronco / 2) ||
         (dist(posX + 20, posY + 40, troncoX2Subterraneo + anchoTronco / 2, troncoY2Subterraneo + altoTronco / 2) < anchoTronco / 2)) {
-        juegoDetenido = true;
+        juegoDetenido = true; 
       }
     }
 
     if (pantallaActual === 3) {
       if ((dist(posX + 20, posY + 40, troncoX3Subterraneo + anchoTronco / 2, troncoY3Subterraneo + altoTronco / 2) < anchoTronco / 2)) {
-        juegoDetenido = true;
+        juegoDetenido = true; 
       }
     }
 
     if (pantallaActual === 3) {
       if (posX + 20 >= posXHoyo && posX <= posXHoyo + anchoHoyo && posY + 40 >= posYHoyo && posY <= posYHoyo + altoHoyo) {
+        
         juegoDetenido = true;
       }
     }
@@ -215,14 +218,12 @@ function keyPressed() {
   if (key === 'r') {
     reiniciarJuego();
   }
-
- 
-  if (key === 'i') {
-    pantallaActual = 4;
+  
+  if (key === 'i' && pantallaActual !== 4) {
+    pantallaActual = 4; 
   }
-
- 
-  if (key === 'c') {
+  
+  if (key === 'c' && pantallaActual !== 5) {
     pantallaActual = 5;
   }
 }
@@ -237,8 +238,8 @@ function reiniciarJuego() {
 
   troncoX1 = 500;
   troncoX2 = 700;
-  troncoX2Subterraneo = 500;
-  troncoY2Subterraneo = 330;
+  troncoX2Subterraneo = 500; 
+  troncoY2Subterraneo = 330; 
 
   troncoX3Subterraneo = 600;
   troncoY3Subterraneo = 330;
@@ -322,6 +323,11 @@ function draw() {
 
         dibujarTronco(troncoX3Subterraneo, troncoY3Subterraneo);
         troncoX3Subterraneo -= troncoVelocidad;
+
+        
+        if (posX >= anchuraPantalla) {
+          juegoDetenido = true; 
+        }
       }
     }
   }
@@ -348,21 +354,15 @@ function draw() {
     fill(255);
     textSize(20);
     text(`${minutosStr}:${segundosStr}`, 10, 30);
-  }
-
-  
-  if (pantallaActual === 4) {
-    background(192); 
+  } else if (pantallaActual === 4) {
+    background(200);
     fill(0);
-    textSize(16);
-    text(instrucciones, 50, 50, width - 100, height - 100);
-  }
-
-  
-  if (pantallaActual === 5) {
-    background(192); 
+    textSize(20);
+    text(instrucciones, 20, 50, width - 40, height - 40);
+  } else if (pantallaActual === 5) {
+    background(200);
     fill(0);
-    textSize(16);
-    text(creditos, 50, 50, width - 100, height - 100);
+    textSize(20);
+    text(creditos, 20, 50, width - 40, height - 40);
   }
 }
