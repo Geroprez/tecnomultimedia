@@ -1,0 +1,20 @@
+class Enemigo {
+  
+  
+  
+  
+  
+  
+ movimiento() {
+   
+   
+ }
+
+ TocaJugador() {
+   
+   
+ }
+
+
+
+}
